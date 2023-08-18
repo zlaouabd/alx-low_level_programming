@@ -25,7 +25,7 @@ if (*format_ptr == 'c')
 c_arg = (char)va_arg(args, int);
 printf("%c", c_arg);
 }
-else if (*format_ptr == 'i'
+else if (*format_ptr == 'i')
 {
 i_arg = va_arg(args, int);
 printf("%d", i_arg);
@@ -44,10 +44,11 @@ else
 printf("%s", s_arg);
 }
 format_ptr++;
-if (*format_ptr)
+if (*format_ptr && (*format_ptr == 'c'
+|| *format_ptr == 'i' ||
+*format_ptr == 'f' || *format_ptr == 's'))
 printf(", ");
 }
 printf("\n");
 va_end(args);
 }
-
